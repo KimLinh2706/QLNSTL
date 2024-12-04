@@ -1,0 +1,836 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="QLNSTLModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BAOHIEM">
+          <Key>
+            <PropertyRef Name="MASOBH" />
+          </Key>
+          <Property Name="MASOBH" Type="int" Nullable="false" />
+          <Property Name="TENBH" Type="nvarchar" MaxLength="128" />
+          <Property Name="MANV" Type="varchar" MaxLength="15" />
+          <Property Name="NOICAP" Type="nvarchar" MaxLength="128" />
+          <Property Name="THOIGIAN" Type="date" />
+          <Property Name="SOTIENDONG" Type="float" />
+        </EntityType>
+        <EntityType Name="BOIDUONG">
+          <Key>
+            <PropertyRef Name="MABD" />
+          </Key>
+          <Property Name="MABD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MANV" Type="varchar" MaxLength="15" />
+          <Property Name="NOIBOIDUONG" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="THOIGIANDI" Type="date" Nullable="false" />
+          <Property Name="THOIGIANKETTHUC" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CHAMCONG">
+          <Key>
+            <PropertyRef Name="MANV" />
+            <PropertyRef Name="NGAYLAMVIEC" />
+          </Key>
+          <Property Name="MANV" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="NGAYLAMVIEC" Type="date" Nullable="false" />
+          <Property Name="MATT" Type="varchar" MaxLength="15" />
+          <Property Name="GHICHU" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="CHUCVU">
+          <Key>
+            <PropertyRef Name="MACV" />
+          </Key>
+          <Property Name="MACV" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="TENCV" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="KHENTHUONG_KYLUAT">
+          <Key>
+            <PropertyRef Name="MA" />
+          </Key>
+          <Property Name="MA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MANV" Type="varchar" MaxLength="15" />
+          <Property Name="THOIGIAN" Type="date" />
+          <Property Name="HINHTHUC" Type="nvarchar" MaxLength="128" />
+          <Property Name="SOTIEN" Type="float" />
+          <Property Name="LYDO" Type="nvarchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="LUONGCANHAN">
+          <Key>
+            <PropertyRef Name="MANV" />
+          </Key>
+          <Property Name="MANV" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="LUONGCB" Type="float" />
+          <Property Name="HESO" Type="float" />
+          <Property Name="TIENPHUCAP" Type="float" />
+        </EntityType>
+        <EntityType Name="LUONGTHANG">
+          <Key>
+            <PropertyRef Name="MANV" />
+            <PropertyRef Name="THANG" />
+            <PropertyRef Name="NAM" />
+          </Key>
+          <Property Name="MANV" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="THANG" Type="int" Nullable="false" />
+          <Property Name="NAM" Type="int" Nullable="false" />
+          <Property Name="LUONGCB_LUCTINHLUONG" Type="float" />
+          <Property Name="HESO_LUCTINHLUONG" Type="float" />
+          <Property Name="TIENPHUCAP_LUCTINHLUONG" Type="float" />
+          <Property Name="SONGAYCONG" Type="int" />
+          <Property Name="TIENBAOHIEM_LUCTINHLUONG" Type="float" />
+          <Property Name="TIENKHENTHUONG_LUCTINHLUONG" Type="float" />
+          <Property Name="TIENKYLUAT_LUCTINHLUONG" Type="float" />
+          <Property Name="TIENTAMUNG_LUCTHANGTINHLUONG" Type="float" />
+          <Property Name="TONGLUONG" Type="float" />
+        </EntityType>
+        <EntityType Name="NHANVIEN">
+          <Key>
+            <PropertyRef Name="MANV" />
+          </Key>
+          <Property Name="MANV" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="HOTEN" Type="nvarchar" MaxLength="128" />
+          <Property Name="DANTOC" Type="nvarchar" MaxLength="128" />
+          <Property Name="GIOITINH" Type="nvarchar" MaxLength="56" />
+          <Property Name="SODIENTHOAI" Type="varchar" MaxLength="11" />
+          <Property Name="QUEQUAN" Type="nvarchar" MaxLength="256" />
+          <Property Name="NGAYSINH" Type="date" />
+          <Property Name="NGAYVAOLAM" Type="date" />
+          <Property Name="MAPB" Type="varchar" MaxLength="15" />
+          <Property Name="MACV" Type="varchar" MaxLength="15" />
+          <Property Name="TRINHDO" Type="nvarchar" MaxLength="56" />
+        </EntityType>
+        <EntityType Name="PHONGBAN">
+          <Key>
+            <PropertyRef Name="MAPB" />
+          </Key>
+          <Property Name="MAPB" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="TENPB" Type="nvarchar" MaxLength="128" />
+          <Property Name="SODIENTHOAIPB" Type="varchar" MaxLength="11" />
+        </EntityType>
+        <EntityType Name="TAIKHOAN">
+          <Key>
+            <PropertyRef Name="MATK" />
+          </Key>
+          <Property Name="MATK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TENDANGNHAP" Type="varchar" MaxLength="56" Nullable="false" />
+          <Property Name="MATKHAU" Type="varchar" MaxLength="56" Nullable="false" />
+          <Property Name="TENNGUOIDUNG" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="TYPE" Type="int" Nullable="false" />
+          <Property Name="MANV" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="TAMUNG">
+          <Key>
+            <PropertyRef Name="MANV" />
+            <PropertyRef Name="NGAYTU" />
+          </Key>
+          <Property Name="MANV" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="NGAYTU" Type="date" Nullable="false" />
+          <Property Name="SOTIENTU" Type="float" />
+        </EntityType>
+        <EntityType Name="TINHTRANG">
+          <Key>
+            <PropertyRef Name="MATT" />
+          </Key>
+          <Property Name="MATT" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="TINHTRANG" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <Association Name="FK__BAOHIEM__MANV__2F10007B">
+          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
+          <End Role="BAOHIEM" Type="Self.BAOHIEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NHANVIEN">
+              <PropertyRef Name="MANV" />
+            </Principal>
+            <Dependent Role="BAOHIEM">
+              <PropertyRef Name="MANV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BOIDUONG__MANV__267ABA7A">
+          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
+          <End Role="BOIDUONG" Type="Self.BOIDUONG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NHANVIEN">
+              <PropertyRef Name="MANV" />
+            </Principal>
+            <Dependent Role="BOIDUONG">
+              <PropertyRef Name="MANV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CHAMCONG__MANV__29572725">
+          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1" />
+          <End Role="CHAMCONG" Type="Self.CHAMCONG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NHANVIEN">
+              <PropertyRef Name="MANV" />
+            </Principal>
+            <Dependent Role="CHAMCONG">
+              <PropertyRef Name="MANV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CHAMCONG__MATT__2A4B4B5E">
+          <End Role="TINHTRANG" Type="Self.TINHTRANG" Multiplicity="0..1" />
+          <End Role="CHAMCONG" Type="Self.CHAMCONG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TINHTRANG">
+              <PropertyRef Name="MATT" />
+            </Principal>
+            <Dependent Role="CHAMCONG">
+              <PropertyRef Name="MATT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__KHENTHUONG__MANV__2D27B809">
+          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
+          <End Role="KHENTHUONG_KYLUAT" Type="Self.KHENTHUONG_KYLUAT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NHANVIEN">
+              <PropertyRef Name="MANV" />
+            </Principal>
+            <Dependent Role="KHENTHUONG_KYLUAT">
+              <PropertyRef Name="MANV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LUONGCANHA__MANV__2E1BDC42">
+          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1" />
+          <End Role="LUONGCANHAN" Type="Self.LUONGCANHAN" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="NHANVIEN">
+              <PropertyRef Name="MANV" />
+            </Principal>
+            <Dependent Role="LUONGCANHAN">
+              <PropertyRef Name="MANV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LUONGTHANG__MANV__300424B4">
+          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1" />
+          <End Role="LUONGTHANG" Type="Self.LUONGTHANG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NHANVIEN">
+              <PropertyRef Name="MANV" />
+            </Principal>
+            <Dependent Role="LUONGTHANG">
+              <PropertyRef Name="MANV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NHANVIEN__MACV__286302EC">
+          <End Role="CHUCVU" Type="Self.CHUCVU" Multiplicity="0..1" />
+          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CHUCVU">
+              <PropertyRef Name="MACV" />
+            </Principal>
+            <Dependent Role="NHANVIEN">
+              <PropertyRef Name="MACV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NHANVIEN__MAPB__276EDEB3">
+          <End Role="PHONGBAN" Type="Self.PHONGBAN" Multiplicity="0..1" />
+          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PHONGBAN">
+              <PropertyRef Name="MAPB" />
+            </Principal>
+            <Dependent Role="NHANVIEN">
+              <PropertyRef Name="MAPB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TAIKHOAN__MANV__25869641">
+          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
+          <End Role="TAIKHOAN" Type="Self.TAIKHOAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NHANVIEN">
+              <PropertyRef Name="MANV" />
+            </Principal>
+            <Dependent Role="TAIKHOAN">
+              <PropertyRef Name="MANV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TAMUNG__MANV__2B3F6F97">
+          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1" />
+          <End Role="TAMUNG" Type="Self.TAMUNG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NHANVIEN">
+              <PropertyRef Name="MANV" />
+            </Principal>
+            <Dependent Role="TAMUNG">
+              <PropertyRef Name="MANV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QLNSTLModelStoreContainer">
+          <EntitySet Name="BAOHIEM" EntityType="Self.BAOHIEM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BOIDUONG" EntityType="Self.BOIDUONG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CHAMCONG" EntityType="Self.CHAMCONG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CHUCVU" EntityType="Self.CHUCVU" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KHENTHUONG_KYLUAT" EntityType="Self.KHENTHUONG_KYLUAT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LUONGCANHAN" EntityType="Self.LUONGCANHAN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LUONGTHANG" EntityType="Self.LUONGTHANG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NHANVIEN" EntityType="Self.NHANVIEN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PHONGBAN" EntityType="Self.PHONGBAN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TAIKHOAN" EntityType="Self.TAIKHOAN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TAMUNG" EntityType="Self.TAMUNG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TINHTRANG" EntityType="Self.TINHTRANG" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__BAOHIEM__MANV__2F10007B" Association="Self.FK__BAOHIEM__MANV__2F10007B">
+            <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+            <End Role="BAOHIEM" EntitySet="BAOHIEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BOIDUONG__MANV__267ABA7A" Association="Self.FK__BOIDUONG__MANV__267ABA7A">
+            <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+            <End Role="BOIDUONG" EntitySet="BOIDUONG" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CHAMCONG__MANV__29572725" Association="Self.FK__CHAMCONG__MANV__29572725">
+            <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+            <End Role="CHAMCONG" EntitySet="CHAMCONG" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CHAMCONG__MATT__2A4B4B5E" Association="Self.FK__CHAMCONG__MATT__2A4B4B5E">
+            <End Role="TINHTRANG" EntitySet="TINHTRANG" />
+            <End Role="CHAMCONG" EntitySet="CHAMCONG" />
+          </AssociationSet>
+          <AssociationSet Name="FK__KHENTHUONG__MANV__2D27B809" Association="Self.FK__KHENTHUONG__MANV__2D27B809">
+            <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+            <End Role="KHENTHUONG_KYLUAT" EntitySet="KHENTHUONG_KYLUAT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LUONGCANHA__MANV__2E1BDC42" Association="Self.FK__LUONGCANHA__MANV__2E1BDC42">
+            <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+            <End Role="LUONGCANHAN" EntitySet="LUONGCANHAN" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LUONGTHANG__MANV__300424B4" Association="Self.FK__LUONGTHANG__MANV__300424B4">
+            <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+            <End Role="LUONGTHANG" EntitySet="LUONGTHANG" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NHANVIEN__MACV__286302EC" Association="Self.FK__NHANVIEN__MACV__286302EC">
+            <End Role="CHUCVU" EntitySet="CHUCVU" />
+            <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NHANVIEN__MAPB__276EDEB3" Association="Self.FK__NHANVIEN__MAPB__276EDEB3">
+            <End Role="PHONGBAN" EntitySet="PHONGBAN" />
+            <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TAIKHOAN__MANV__25869641" Association="Self.FK__TAIKHOAN__MANV__25869641">
+            <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+            <End Role="TAIKHOAN" EntitySet="TAIKHOAN" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TAMUNG__MANV__2B3F6F97" Association="Self.FK__TAMUNG__MANV__2B3F6F97">
+            <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+            <End Role="TAMUNG" EntitySet="TAMUNG" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QLNSTLModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BAOHIEM">
+          <Key>
+            <PropertyRef Name="MASOBH" />
+          </Key>
+          <Property Name="MASOBH" Type="Int32" Nullable="false" />
+          <Property Name="TENBH" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="MANV" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="NOICAP" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="THOIGIAN" Type="DateTime" Precision="0" />
+          <Property Name="SOTIENDONG" Type="Double" />
+          <NavigationProperty Name="NHANVIEN" Relationship="Self.FK__BAOHIEM__MANV__2F10007B" FromRole="BAOHIEM" ToRole="NHANVIEN" />
+        </EntityType>
+        <EntityType Name="BOIDUONG">
+          <Key>
+            <PropertyRef Name="MABD" />
+          </Key>
+          <Property Name="MABD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MANV" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="NOIBOIDUONG" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="THOIGIANDI" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="THOIGIANKETTHUC" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="NHANVIEN" Relationship="Self.FK__BOIDUONG__MANV__267ABA7A" FromRole="BOIDUONG" ToRole="NHANVIEN" />
+        </EntityType>
+        <EntityType Name="CHAMCONG">
+          <Key>
+            <PropertyRef Name="MANV" />
+            <PropertyRef Name="NGAYLAMVIEC" />
+          </Key>
+          <Property Name="MANV" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NGAYLAMVIEC" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="MATT" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="GHICHU" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="NHANVIEN" Relationship="Self.FK__CHAMCONG__MANV__29572725" FromRole="CHAMCONG" ToRole="NHANVIEN" />
+          <NavigationProperty Name="TINHTRANG" Relationship="Self.FK__CHAMCONG__MATT__2A4B4B5E" FromRole="CHAMCONG" ToRole="TINHTRANG" />
+        </EntityType>
+        <EntityType Name="CHUCVU">
+          <Key>
+            <PropertyRef Name="MACV" />
+          </Key>
+          <Property Name="MACV" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TENCV" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="NHANVIENs" Relationship="Self.FK__NHANVIEN__MACV__286302EC" FromRole="CHUCVU" ToRole="NHANVIEN" />
+        </EntityType>
+        <EntityType Name="KHENTHUONG_KYLUAT">
+          <Key>
+            <PropertyRef Name="MA" />
+          </Key>
+          <Property Name="MA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MANV" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="THOIGIAN" Type="DateTime" Precision="0" />
+          <Property Name="HINHTHUC" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="SOTIEN" Type="Double" />
+          <Property Name="LYDO" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="NHANVIEN" Relationship="Self.FK__KHENTHUONG__MANV__2D27B809" FromRole="KHENTHUONG_KYLUAT" ToRole="NHANVIEN" />
+        </EntityType>
+        <EntityType Name="LUONGCANHAN">
+          <Key>
+            <PropertyRef Name="MANV" />
+          </Key>
+          <Property Name="MANV" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LUONGCB" Type="Double" />
+          <Property Name="HESO" Type="Double" />
+          <Property Name="TIENPHUCAP" Type="Double" />
+          <NavigationProperty Name="NHANVIEN" Relationship="Self.FK__LUONGCANHA__MANV__2E1BDC42" FromRole="LUONGCANHAN" ToRole="NHANVIEN" />
+        </EntityType>
+        <EntityType Name="LUONGTHANG">
+          <Key>
+            <PropertyRef Name="MANV" />
+            <PropertyRef Name="THANG" />
+            <PropertyRef Name="NAM" />
+          </Key>
+          <Property Name="MANV" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="THANG" Type="Int32" Nullable="false" />
+          <Property Name="NAM" Type="Int32" Nullable="false" />
+          <Property Name="LUONGCB_LUCTINHLUONG" Type="Double" />
+          <Property Name="HESO_LUCTINHLUONG" Type="Double" />
+          <Property Name="TIENPHUCAP_LUCTINHLUONG" Type="Double" />
+          <Property Name="SONGAYCONG" Type="Int32" />
+          <Property Name="TIENBAOHIEM_LUCTINHLUONG" Type="Double" />
+          <Property Name="TIENKHENTHUONG_LUCTINHLUONG" Type="Double" />
+          <Property Name="TIENKYLUAT_LUCTINHLUONG" Type="Double" />
+          <Property Name="TIENTAMUNG_LUCTHANGTINHLUONG" Type="Double" />
+          <Property Name="TONGLUONG" Type="Double" />
+          <NavigationProperty Name="NHANVIEN" Relationship="Self.FK__LUONGTHANG__MANV__300424B4" FromRole="LUONGTHANG" ToRole="NHANVIEN" />
+        </EntityType>
+        <EntityType Name="NHANVIEN">
+          <Key>
+            <PropertyRef Name="MANV" />
+          </Key>
+          <Property Name="MANV" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HOTEN" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="DANTOC" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="GIOITINH" Type="String" MaxLength="56" FixedLength="false" Unicode="true" />
+          <Property Name="SODIENTHOAI" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="QUEQUAN" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="NGAYSINH" Type="DateTime" Precision="0" />
+          <Property Name="NGAYVAOLAM" Type="DateTime" Precision="0" />
+          <Property Name="MAPB" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="MACV" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="TRINHDO" Type="String" MaxLength="56" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BAOHIEMs" Relationship="Self.FK__BAOHIEM__MANV__2F10007B" FromRole="NHANVIEN" ToRole="BAOHIEM" />
+          <NavigationProperty Name="BOIDUONGs" Relationship="Self.FK__BOIDUONG__MANV__267ABA7A" FromRole="NHANVIEN" ToRole="BOIDUONG" />
+          <NavigationProperty Name="CHAMCONGs" Relationship="Self.FK__CHAMCONG__MANV__29572725" FromRole="NHANVIEN" ToRole="CHAMCONG" />
+          <NavigationProperty Name="CHUCVU" Relationship="Self.FK__NHANVIEN__MACV__286302EC" FromRole="NHANVIEN" ToRole="CHUCVU" />
+          <NavigationProperty Name="KHENTHUONG_KYLUAT" Relationship="Self.FK__KHENTHUONG__MANV__2D27B809" FromRole="NHANVIEN" ToRole="KHENTHUONG_KYLUAT" />
+          <NavigationProperty Name="LUONGCANHAN" Relationship="Self.FK__LUONGCANHA__MANV__2E1BDC42" FromRole="NHANVIEN" ToRole="LUONGCANHAN" />
+          <NavigationProperty Name="LUONGTHANGs" Relationship="Self.FK__LUONGTHANG__MANV__300424B4" FromRole="NHANVIEN" ToRole="LUONGTHANG" />
+          <NavigationProperty Name="PHONGBAN" Relationship="Self.FK__NHANVIEN__MAPB__276EDEB3" FromRole="NHANVIEN" ToRole="PHONGBAN" />
+          <NavigationProperty Name="TAIKHOANs" Relationship="Self.FK__TAIKHOAN__MANV__25869641" FromRole="NHANVIEN" ToRole="TAIKHOAN" />
+          <NavigationProperty Name="TAMUNGs" Relationship="Self.FK__TAMUNG__MANV__2B3F6F97" FromRole="NHANVIEN" ToRole="TAMUNG" />
+        </EntityType>
+        <EntityType Name="PHONGBAN">
+          <Key>
+            <PropertyRef Name="MAPB" />
+          </Key>
+          <Property Name="MAPB" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TENPB" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="SODIENTHOAIPB" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="NHANVIENs" Relationship="Self.FK__NHANVIEN__MAPB__276EDEB3" FromRole="PHONGBAN" ToRole="NHANVIEN" />
+        </EntityType>
+        <EntityType Name="TAIKHOAN">
+          <Key>
+            <PropertyRef Name="MATK" />
+          </Key>
+          <Property Name="MATK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TENDANGNHAP" Type="String" MaxLength="56" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MATKHAU" Type="String" MaxLength="56" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TENNGUOIDUNG" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TYPE" Type="Int32" Nullable="false" />
+          <Property Name="MANV" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="NHANVIEN" Relationship="Self.FK__TAIKHOAN__MANV__25869641" FromRole="TAIKHOAN" ToRole="NHANVIEN" />
+        </EntityType>
+        <EntityType Name="TAMUNG">
+          <Key>
+            <PropertyRef Name="MANV" />
+            <PropertyRef Name="NGAYTU" />
+          </Key>
+          <Property Name="MANV" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NGAYTU" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="SOTIENTU" Type="Double" />
+          <NavigationProperty Name="NHANVIEN" Relationship="Self.FK__TAMUNG__MANV__2B3F6F97" FromRole="TAMUNG" ToRole="NHANVIEN" />
+        </EntityType>
+        <EntityType Name="TINHTRANG">
+          <Key>
+            <PropertyRef Name="MATT" />
+          </Key>
+          <Property Name="MATT" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TINHTRANG1" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CHAMCONGs" Relationship="Self.FK__CHAMCONG__MATT__2A4B4B5E" FromRole="TINHTRANG" ToRole="CHAMCONG" />
+        </EntityType>
+        <Association Name="FK__BAOHIEM__MANV__2F10007B">
+          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
+          <End Role="BAOHIEM" Type="Self.BAOHIEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NHANVIEN">
+              <PropertyRef Name="MANV" />
+            </Principal>
+            <Dependent Role="BAOHIEM">
+              <PropertyRef Name="MANV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BOIDUONG__MANV__267ABA7A">
+          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
+          <End Role="BOIDUONG" Type="Self.BOIDUONG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NHANVIEN">
+              <PropertyRef Name="MANV" />
+            </Principal>
+            <Dependent Role="BOIDUONG">
+              <PropertyRef Name="MANV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CHAMCONG__MANV__29572725">
+          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1" />
+          <End Role="CHAMCONG" Type="Self.CHAMCONG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NHANVIEN">
+              <PropertyRef Name="MANV" />
+            </Principal>
+            <Dependent Role="CHAMCONG">
+              <PropertyRef Name="MANV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CHAMCONG__MATT__2A4B4B5E">
+          <End Role="TINHTRANG" Type="Self.TINHTRANG" Multiplicity="0..1" />
+          <End Role="CHAMCONG" Type="Self.CHAMCONG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TINHTRANG">
+              <PropertyRef Name="MATT" />
+            </Principal>
+            <Dependent Role="CHAMCONG">
+              <PropertyRef Name="MATT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NHANVIEN__MACV__286302EC">
+          <End Role="CHUCVU" Type="Self.CHUCVU" Multiplicity="0..1" />
+          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CHUCVU">
+              <PropertyRef Name="MACV" />
+            </Principal>
+            <Dependent Role="NHANVIEN">
+              <PropertyRef Name="MACV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__KHENTHUONG__MANV__2D27B809">
+          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
+          <End Role="KHENTHUONG_KYLUAT" Type="Self.KHENTHUONG_KYLUAT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NHANVIEN">
+              <PropertyRef Name="MANV" />
+            </Principal>
+            <Dependent Role="KHENTHUONG_KYLUAT">
+              <PropertyRef Name="MANV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LUONGCANHA__MANV__2E1BDC42">
+          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1" />
+          <End Role="LUONGCANHAN" Type="Self.LUONGCANHAN" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="NHANVIEN">
+              <PropertyRef Name="MANV" />
+            </Principal>
+            <Dependent Role="LUONGCANHAN">
+              <PropertyRef Name="MANV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LUONGTHANG__MANV__300424B4">
+          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1" />
+          <End Role="LUONGTHANG" Type="Self.LUONGTHANG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NHANVIEN">
+              <PropertyRef Name="MANV" />
+            </Principal>
+            <Dependent Role="LUONGTHANG">
+              <PropertyRef Name="MANV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NHANVIEN__MAPB__276EDEB3">
+          <End Role="PHONGBAN" Type="Self.PHONGBAN" Multiplicity="0..1" />
+          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PHONGBAN">
+              <PropertyRef Name="MAPB" />
+            </Principal>
+            <Dependent Role="NHANVIEN">
+              <PropertyRef Name="MAPB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TAIKHOAN__MANV__25869641">
+          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
+          <End Role="TAIKHOAN" Type="Self.TAIKHOAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NHANVIEN">
+              <PropertyRef Name="MANV" />
+            </Principal>
+            <Dependent Role="TAIKHOAN">
+              <PropertyRef Name="MANV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TAMUNG__MANV__2B3F6F97">
+          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1" />
+          <End Role="TAMUNG" Type="Self.TAMUNG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NHANVIEN">
+              <PropertyRef Name="MANV" />
+            </Principal>
+            <Dependent Role="TAMUNG">
+              <PropertyRef Name="MANV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QLNSTLEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BAOHIEMs" EntityType="Self.BAOHIEM" />
+          <EntitySet Name="BOIDUONGs" EntityType="Self.BOIDUONG" />
+          <EntitySet Name="CHAMCONGs" EntityType="Self.CHAMCONG" />
+          <EntitySet Name="CHUCVUs" EntityType="Self.CHUCVU" />
+          <EntitySet Name="KHENTHUONG_KYLUAT" EntityType="Self.KHENTHUONG_KYLUAT" />
+          <EntitySet Name="LUONGCANHANs" EntityType="Self.LUONGCANHAN" />
+          <EntitySet Name="LUONGTHANGs" EntityType="Self.LUONGTHANG" />
+          <EntitySet Name="NHANVIENs" EntityType="Self.NHANVIEN" />
+          <EntitySet Name="PHONGBANs" EntityType="Self.PHONGBAN" />
+          <EntitySet Name="TAIKHOANs" EntityType="Self.TAIKHOAN" />
+          <EntitySet Name="TAMUNGs" EntityType="Self.TAMUNG" />
+          <EntitySet Name="TINHTRANGs" EntityType="Self.TINHTRANG" />
+          <AssociationSet Name="FK__BAOHIEM__MANV__2F10007B" Association="Self.FK__BAOHIEM__MANV__2F10007B">
+            <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+            <End Role="BAOHIEM" EntitySet="BAOHIEMs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BOIDUONG__MANV__267ABA7A" Association="Self.FK__BOIDUONG__MANV__267ABA7A">
+            <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+            <End Role="BOIDUONG" EntitySet="BOIDUONGs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CHAMCONG__MANV__29572725" Association="Self.FK__CHAMCONG__MANV__29572725">
+            <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+            <End Role="CHAMCONG" EntitySet="CHAMCONGs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CHAMCONG__MATT__2A4B4B5E" Association="Self.FK__CHAMCONG__MATT__2A4B4B5E">
+            <End Role="TINHTRANG" EntitySet="TINHTRANGs" />
+            <End Role="CHAMCONG" EntitySet="CHAMCONGs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NHANVIEN__MACV__286302EC" Association="Self.FK__NHANVIEN__MACV__286302EC">
+            <End Role="CHUCVU" EntitySet="CHUCVUs" />
+            <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__KHENTHUONG__MANV__2D27B809" Association="Self.FK__KHENTHUONG__MANV__2D27B809">
+            <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+            <End Role="KHENTHUONG_KYLUAT" EntitySet="KHENTHUONG_KYLUAT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LUONGCANHA__MANV__2E1BDC42" Association="Self.FK__LUONGCANHA__MANV__2E1BDC42">
+            <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+            <End Role="LUONGCANHAN" EntitySet="LUONGCANHANs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LUONGTHANG__MANV__300424B4" Association="Self.FK__LUONGTHANG__MANV__300424B4">
+            <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+            <End Role="LUONGTHANG" EntitySet="LUONGTHANGs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NHANVIEN__MAPB__276EDEB3" Association="Self.FK__NHANVIEN__MAPB__276EDEB3">
+            <End Role="PHONGBAN" EntitySet="PHONGBANs" />
+            <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TAIKHOAN__MANV__25869641" Association="Self.FK__TAIKHOAN__MANV__25869641">
+            <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+            <End Role="TAIKHOAN" EntitySet="TAIKHOANs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TAMUNG__MANV__2B3F6F97" Association="Self.FK__TAMUNG__MANV__2B3F6F97">
+            <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+            <End Role="TAMUNG" EntitySet="TAMUNGs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QLNSTLModelStoreContainer" CdmEntityContainer="QLNSTLEntities">
+          <EntitySetMapping Name="BAOHIEMs">
+            <EntityTypeMapping TypeName="QLNSTLModel.BAOHIEM">
+              <MappingFragment StoreEntitySet="BAOHIEM">
+                <ScalarProperty Name="MASOBH" ColumnName="MASOBH" />
+                <ScalarProperty Name="TENBH" ColumnName="TENBH" />
+                <ScalarProperty Name="MANV" ColumnName="MANV" />
+                <ScalarProperty Name="NOICAP" ColumnName="NOICAP" />
+                <ScalarProperty Name="THOIGIAN" ColumnName="THOIGIAN" />
+                <ScalarProperty Name="SOTIENDONG" ColumnName="SOTIENDONG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BOIDUONGs">
+            <EntityTypeMapping TypeName="QLNSTLModel.BOIDUONG">
+              <MappingFragment StoreEntitySet="BOIDUONG">
+                <ScalarProperty Name="MABD" ColumnName="MABD" />
+                <ScalarProperty Name="MANV" ColumnName="MANV" />
+                <ScalarProperty Name="NOIBOIDUONG" ColumnName="NOIBOIDUONG" />
+                <ScalarProperty Name="THOIGIANDI" ColumnName="THOIGIANDI" />
+                <ScalarProperty Name="THOIGIANKETTHUC" ColumnName="THOIGIANKETTHUC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CHAMCONGs">
+            <EntityTypeMapping TypeName="QLNSTLModel.CHAMCONG">
+              <MappingFragment StoreEntitySet="CHAMCONG">
+                <ScalarProperty Name="MANV" ColumnName="MANV" />
+                <ScalarProperty Name="NGAYLAMVIEC" ColumnName="NGAYLAMVIEC" />
+                <ScalarProperty Name="MATT" ColumnName="MATT" />
+                <ScalarProperty Name="GHICHU" ColumnName="GHICHU" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CHUCVUs">
+            <EntityTypeMapping TypeName="QLNSTLModel.CHUCVU">
+              <MappingFragment StoreEntitySet="CHUCVU">
+                <ScalarProperty Name="MACV" ColumnName="MACV" />
+                <ScalarProperty Name="TENCV" ColumnName="TENCV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KHENTHUONG_KYLUAT">
+            <EntityTypeMapping TypeName="QLNSTLModel.KHENTHUONG_KYLUAT">
+              <MappingFragment StoreEntitySet="KHENTHUONG_KYLUAT">
+                <ScalarProperty Name="MA" ColumnName="MA" />
+                <ScalarProperty Name="MANV" ColumnName="MANV" />
+                <ScalarProperty Name="THOIGIAN" ColumnName="THOIGIAN" />
+                <ScalarProperty Name="HINHTHUC" ColumnName="HINHTHUC" />
+                <ScalarProperty Name="SOTIEN" ColumnName="SOTIEN" />
+                <ScalarProperty Name="LYDO" ColumnName="LYDO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LUONGCANHANs">
+            <EntityTypeMapping TypeName="QLNSTLModel.LUONGCANHAN">
+              <MappingFragment StoreEntitySet="LUONGCANHAN">
+                <ScalarProperty Name="MANV" ColumnName="MANV" />
+                <ScalarProperty Name="LUONGCB" ColumnName="LUONGCB" />
+                <ScalarProperty Name="HESO" ColumnName="HESO" />
+                <ScalarProperty Name="TIENPHUCAP" ColumnName="TIENPHUCAP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LUONGTHANGs">
+            <EntityTypeMapping TypeName="QLNSTLModel.LUONGTHANG">
+              <MappingFragment StoreEntitySet="LUONGTHANG">
+                <ScalarProperty Name="MANV" ColumnName="MANV" />
+                <ScalarProperty Name="THANG" ColumnName="THANG" />
+                <ScalarProperty Name="NAM" ColumnName="NAM" />
+                <ScalarProperty Name="LUONGCB_LUCTINHLUONG" ColumnName="LUONGCB_LUCTINHLUONG" />
+                <ScalarProperty Name="HESO_LUCTINHLUONG" ColumnName="HESO_LUCTINHLUONG" />
+                <ScalarProperty Name="TIENPHUCAP_LUCTINHLUONG" ColumnName="TIENPHUCAP_LUCTINHLUONG" />
+                <ScalarProperty Name="SONGAYCONG" ColumnName="SONGAYCONG" />
+                <ScalarProperty Name="TIENBAOHIEM_LUCTINHLUONG" ColumnName="TIENBAOHIEM_LUCTINHLUONG" />
+                <ScalarProperty Name="TIENKHENTHUONG_LUCTINHLUONG" ColumnName="TIENKHENTHUONG_LUCTINHLUONG" />
+                <ScalarProperty Name="TIENKYLUAT_LUCTINHLUONG" ColumnName="TIENKYLUAT_LUCTINHLUONG" />
+                <ScalarProperty Name="TIENTAMUNG_LUCTHANGTINHLUONG" ColumnName="TIENTAMUNG_LUCTHANGTINHLUONG" />
+                <ScalarProperty Name="TONGLUONG" ColumnName="TONGLUONG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NHANVIENs">
+            <EntityTypeMapping TypeName="QLNSTLModel.NHANVIEN">
+              <MappingFragment StoreEntitySet="NHANVIEN">
+                <ScalarProperty Name="MANV" ColumnName="MANV" />
+                <ScalarProperty Name="HOTEN" ColumnName="HOTEN" />
+                <ScalarProperty Name="DANTOC" ColumnName="DANTOC" />
+                <ScalarProperty Name="GIOITINH" ColumnName="GIOITINH" />
+                <ScalarProperty Name="SODIENTHOAI" ColumnName="SODIENTHOAI" />
+                <ScalarProperty Name="QUEQUAN" ColumnName="QUEQUAN" />
+                <ScalarProperty Name="NGAYSINH" ColumnName="NGAYSINH" />
+                <ScalarProperty Name="NGAYVAOLAM" ColumnName="NGAYVAOLAM" />
+                <ScalarProperty Name="MAPB" ColumnName="MAPB" />
+                <ScalarProperty Name="MACV" ColumnName="MACV" />
+                <ScalarProperty Name="TRINHDO" ColumnName="TRINHDO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PHONGBANs">
+            <EntityTypeMapping TypeName="QLNSTLModel.PHONGBAN">
+              <MappingFragment StoreEntitySet="PHONGBAN">
+                <ScalarProperty Name="MAPB" ColumnName="MAPB" />
+                <ScalarProperty Name="TENPB" ColumnName="TENPB" />
+                <ScalarProperty Name="SODIENTHOAIPB" ColumnName="SODIENTHOAIPB" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TAIKHOANs">
+            <EntityTypeMapping TypeName="QLNSTLModel.TAIKHOAN">
+              <MappingFragment StoreEntitySet="TAIKHOAN">
+                <ScalarProperty Name="MATK" ColumnName="MATK" />
+                <ScalarProperty Name="TENDANGNHAP" ColumnName="TENDANGNHAP" />
+                <ScalarProperty Name="MATKHAU" ColumnName="MATKHAU" />
+                <ScalarProperty Name="TENNGUOIDUNG" ColumnName="TENNGUOIDUNG" />
+                <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+                <ScalarProperty Name="MANV" ColumnName="MANV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TAMUNGs">
+            <EntityTypeMapping TypeName="QLNSTLModel.TAMUNG">
+              <MappingFragment StoreEntitySet="TAMUNG">
+                <ScalarProperty Name="MANV" ColumnName="MANV" />
+                <ScalarProperty Name="NGAYTU" ColumnName="NGAYTU" />
+                <ScalarProperty Name="SOTIENTU" ColumnName="SOTIENTU" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TINHTRANGs">
+            <EntityTypeMapping TypeName="QLNSTLModel.TINHTRANG">
+              <MappingFragment StoreEntitySet="TINHTRANG">
+                <ScalarProperty Name="MATT" ColumnName="MATT" />
+                <ScalarProperty Name="TINHTRANG1" ColumnName="TINHTRANG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

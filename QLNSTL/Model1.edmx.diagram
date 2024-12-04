@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7793b14ac6ae4f59ad39a53494739e0b" Name="Diagram1">
+        <EntityTypeShape EntityType="QLNSTLModel.BAOHIEM" Width="1.5" PointX="5.25" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLNSTLModel.BOIDUONG" Width="1.5" PointX="5.25" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLNSTLModel.CHAMCONG" Width="1.5" PointX="8.25" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLNSTLModel.CHUCVU" Width="1.5" PointX="0.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLNSTLModel.KHENTHUONG_KYLUAT" Width="1.5" PointX="5.25" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLNSTLModel.LUONGCANHAN" Width="1.5" PointX="5.25" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLNSTLModel.LUONGTHANG" Width="1.5" PointX="5.25" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLNSTLModel.NHANVIEN" Width="1.5" PointX="3" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLNSTLModel.PHONGBAN" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLNSTLModel.TAIKHOAN" Width="1.5" PointX="5.25" PointY="23.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLNSTLModel.TAMUNG" Width="1.5" PointX="5.25" PointY="26.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLNSTLModel.TINHTRANG" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="QLNSTLModel.FK__BAOHIEM__MANV__2F10007B" ManuallyRouted="false" />
+        <AssociationConnector Association="QLNSTLModel.FK__BOIDUONG__MANV__267ABA7A" ManuallyRouted="false" />
+        <AssociationConnector Association="QLNSTLModel.FK__CHAMCONG__MANV__29572725" ManuallyRouted="false" />
+        <AssociationConnector Association="QLNSTLModel.FK__CHAMCONG__MATT__2A4B4B5E" ManuallyRouted="false" />
+        <AssociationConnector Association="QLNSTLModel.FK__NHANVIEN__MACV__286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="QLNSTLModel.FK__KHENTHUONG__MANV__2D27B809" ManuallyRouted="false" />
+        <AssociationConnector Association="QLNSTLModel.FK__LUONGCANHA__MANV__2E1BDC42" ManuallyRouted="false" />
+        <AssociationConnector Association="QLNSTLModel.FK__LUONGTHANG__MANV__300424B4" ManuallyRouted="false" />
+        <AssociationConnector Association="QLNSTLModel.FK__NHANVIEN__MAPB__276EDEB3" ManuallyRouted="false" />
+        <AssociationConnector Association="QLNSTLModel.FK__TAIKHOAN__MANV__25869641" ManuallyRouted="false" />
+        <AssociationConnector Association="QLNSTLModel.FK__TAMUNG__MANV__2B3F6F97" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
